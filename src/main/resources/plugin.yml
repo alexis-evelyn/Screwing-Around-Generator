@@ -1,4 +1,4 @@
-name: ScrewingAround Generator
+name: ScrewingAroundGenerator
 version: ${project.version}
 main: me.alexisevelyn.screwingaroundgenerator.Main
 api-version: 1.13

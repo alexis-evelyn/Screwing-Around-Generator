@@ -1,4 +1,4 @@
-package me.alexisevelyn.screwingaroundgenerator.generators;
+package me.alexisevelyn.screwingaroundgenerator.generators.tutorial.firstgen;
 
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -24,7 +24,7 @@ public class FirstGen extends ChunkGenerator {
                 // TODO Heights and blocks generation code here.
                 currentHeight = (int) ((generator.noise(chunkX*16+X, chunkZ*16+Z, 0.5D, 0.5D, true)+1)*15D+50D);
 
-                chunk.setBlock(X, currentHeight, Z, Material.GRASS);
+                chunk.setBlock(X, currentHeight, Z, Material.GRASS_BLOCK);
                 chunk.setBlock(X, currentHeight-1, Z, Material.DIRT);
 
                 for (int i = currentHeight-2; i > 0; i--)
