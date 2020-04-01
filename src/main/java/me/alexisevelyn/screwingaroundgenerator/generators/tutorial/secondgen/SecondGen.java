@@ -46,15 +46,24 @@ public class SecondGen extends ChunkGenerator {
 
     @Override
     public List<BlockPopulator> getDefaultPopulators(World world) {
-        // TODO: The populators are broken and will break your server
+
+        // TODO: The commented out populators are broken and will break your server
         // don't use them unless you want to manually remove the worlds files after the server shuts down!!!
         // Just use Tut1 instead!!!
-        return Arrays.asList(new TreePopulator());
+        // TODO: Fix
+//        return Arrays.asList(new LakePopulator());
+
+        // TODO: Fix
+//        return Arrays.asList(new OrePopulator());
 
 //        return Arrays.asList(
 //                new TreePopulator(),
 //                new GrassPopulator(),
 //                new LakePopulator(),
 //                new OrePopulator());
+
+        return Arrays.asList(
+                new TreePopulator(),
+                new GrassPopulator());
     }
 }
