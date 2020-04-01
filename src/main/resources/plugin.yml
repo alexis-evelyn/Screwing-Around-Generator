@@ -1,0 +1,10 @@
+name: ScrewingAround Generator
+version: ${project.version}
+main: me.alexisevelyn.screwingaroundgenerator.Main
+api-version: 1.13
+prefix: Screwing Around Generator
+load: STARTUP
+softdepend: [Multiverse-core]
+author: Alexis Evelyn
+description: I'm just screwing around with the world generation in this plugin.
+website: https://play.alexisevelyn.me/
