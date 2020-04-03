@@ -18,15 +18,24 @@ public class LakePopulator extends BlockPopulator {
             Block block;
             int chunkX = chunk.getX();
             int chunkZ = chunk.getZ();
+
             int X = chunkX * 16 + random.nextInt(15)-8;
             int Z = chunkZ * 16 + random.nextInt(15)-8;
+
             int Y;
+
             for (Y = world.getMaxHeight()-1; chunk.getBlock(X, Y, Z).getType() == Material.AIR; Y--);
+
             Y -= 7;
+
             block = world.getBlockAt(Z+8, Y, Z+8);
+
             if (random.nextInt(100) < 90) block.setType(Material.WATER); else block.setType(Material.LAVA);  // The chance of spawing a water or lava lake
+
             boolean[] aboolean = new boolean[2048];
+
             boolean flag;
+
             int i = random.nextInt(4)+4;
 
             int j, j1, k1;

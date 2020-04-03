@@ -5,7 +5,9 @@ import me.alexisevelyn.screwingaroundgenerator.generators.tutorial.secondgen.pop
 import me.alexisevelyn.screwingaroundgenerator.generators.tutorial.secondgen.populators.OrePopulator;
 import me.alexisevelyn.screwingaroundgenerator.generators.tutorial.secondgen.populators.TreePopulator;
 import org.bukkit.Material;
+import org.bukkit.TreeType;
 import org.bukkit.World;
+import org.bukkit.block.Biome;
 import org.bukkit.generator.BlockPopulator;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.util.noise.SimplexOctaveGenerator;
@@ -53,17 +55,37 @@ public class SecondGen extends ChunkGenerator {
         // TODO: Fix
 //        return Arrays.asList(new LakePopulator());
 
-        // TODO: Fix
-//        return Arrays.asList(new OrePopulator());
-
-//        return Arrays.asList(
-//                new TreePopulator(),
-//                new GrassPopulator(),
-//                new LakePopulator(),
-//                new OrePopulator());
+        // TODO: Optimize Generator and Populators
+        // TODO: Take advantage of Paper's Chunk Gen Asynchronously
 
         return Arrays.asList(
-                new TreePopulator(),
-                new GrassPopulator());
+                // Ores
+                new OrePopulator(Material.COAL_ORE, 4, 60, 90, 90),
+                new OrePopulator(Material.IRON_ORE, 4, 60, 80, 90),
+                new OrePopulator(Material.GOLD_ORE, 4, 40,60, 70),
+//                new OrePopulator(Material.REDSTONE_ORE, 4, 30,60, 70),
+                new OrePopulator(Material.DIAMOND_ORE, 4, 15,90, 90),
+//                new OrePopulator(Material.LAPIS_ORE, 4, 15,90, 90),
+//                new OrePopulator(Material.EMERALD_ORE, 4, 15,90, 90),
+//                new OrePopulator(Material.NETHER_QUARTZ_ORE, 4, 15,90, 90),
+
+                // Shrubbery
+                new GrassPopulator(Material.GRASS, 4),
+                new GrassPopulator(Material.TALL_GRASS, 4),
+                new GrassPopulator(Material.SWEET_BERRY_BUSH, 4),
+//                new GrassPopulator(Material.DRAGON_EGG, 4),
+//                new GrassPopulator(Material.SPAWNER, 4),
+//                new GrassPopulator(Material.OAK_LOG, 4),
+
+                // Trees
+                new TreePopulator(TreeType.DARK_OAK, Biome.DARK_FOREST, 1),
+                new TreePopulator(TreeType.TREE, Biome.PLAINS, 4),
+                new TreePopulator(TreeType.BIG_TREE, Biome.PLAINS, 1),
+                new TreePopulator(TreeType.MEGA_REDWOOD, Biome.TAIGA,2),
+                new TreePopulator(TreeType.RED_MUSHROOM, Biome.DARK_FOREST, 1),
+                new TreePopulator(TreeType.BROWN_MUSHROOM, Biome.DARK_FOREST, 1),
+                new TreePopulator(TreeType.COCOA_TREE, Biome.JUNGLE, 3));
+
+
     }
 }
