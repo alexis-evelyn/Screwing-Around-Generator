@@ -1,5 +1,6 @@
 package me.alexisevelyn.screwingaroundgenerator;
 
+import me.alexisevelyn.screwingaroundgenerator.generators.checkerboard.Checkerboard;
 import me.alexisevelyn.screwingaroundgenerator.generators.tutorial.firstgen.FirstGen;
 import me.alexisevelyn.screwingaroundgenerator.generators.tutorial.secondgen.SecondGen;
 import org.bukkit.generator.ChunkGenerator;
@@ -25,6 +26,8 @@ public final class Main extends JavaPlugin {
                 return new FirstGen();
             case "Tut2":
                 return new SecondGen();
+            case "Checkerboard":
+                return new Checkerboard();
             default:
                 return new FirstGen();
         }
