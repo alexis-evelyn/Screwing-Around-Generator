@@ -22,27 +22,49 @@ public class Checkerboard extends ChunkGenerator {
     Material black = Material.BLACK_WOOL;
     Material white = Material.WHITE_WOOL;
     Material bottom = Material.BEDROCK;
+
+    // Should Default to True At (0, 2, 0) per chunk
     boolean evenY = true;
+    boolean evenX = true;
+    boolean evenZ = true;
 
     @Override
     public ChunkData generateChunkData(World world, Random random, int chunkX, int chunkZ, BiomeGrid biome) {
         ChunkData chunk = createChunkData(world);
 
         for (int X = 0; X < 16; X++) {
+            evenX = X % 2 == 0;
+
             for (int Z = 0; Z < 16; Z++) {
-                // TODO Heights and blocks generation code here.
+                evenZ = Z % 2 == 0;
 
                 for (int Y = 1; Y <= maxHeight; Y++) {
-                    if (evenY && Z % 2 == 0)
+                    evenY = Y % 2 == 0;
+
+                    // Inverted X Even Z Even Y
+                    if (evenY && evenZ && evenX) // (0, 2, 0) - Black
                         chunk.setBlock(X, Y, Z, black);
-                    else if (evenY && Z % 2 != 0)
+                    else if (evenY && evenZ) // (1, 2, 0) - White
                         chunk.setBlock(X, Y, Z, white);
-                    else if (!evenY && Z % 2 == 0)
+
+                    // Inverted X Odd Z Even Y
+                    else if (evenY && evenX) // (2, 2, 1) - White
                         chunk.setBlock(X, Y, Z, white);
-                    else if (!evenY && Z % 2 != 0)
+                    else if (evenY) // (3, 2, 1) - Black
                         chunk.setBlock(X, Y, Z, black);
 
-                    evenY = !evenY;
+
+                    // Inverted X Even Z Odd Y
+                    if (!evenY && evenZ && evenX) // (0, 3, 0) - White
+                        chunk.setBlock(X, Y, Z, white);
+                    else if (!evenY && evenZ) // (1, 3, 0) - Black
+                        chunk.setBlock(X, Y, Z, black);
+
+                    // Inverted X Odd Z Odd Y
+                    else if (!evenY && evenX) // (2, 3, 1) - Black
+                        chunk.setBlock(X, Y, Z, black);
+                    else if (!evenY) // (3, 3, 1) - White
+                        chunk.setBlock(X, Y, Z, white);
                 }
 
                 chunk.setBlock(X, 0, Z, bottom);
